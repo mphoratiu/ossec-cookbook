@@ -73,6 +73,14 @@ when 'arch'
   end
 end
 
+execute 'agent-auth' do
+  command "#{node['ossec']['user']['dir']}/agent-auth \
+    -m #{node['ossec']['user']['agent_server_ip']} \
+    -p #{node['ossec']['server']['agent_auth_port']}"
+  creates "#{node['ossec']['user']['dir']}/etc/client.keys"
+  only_if { node['ossec']['user']['use_agent_auth'] }
+end
+
 service 'ossec' do
   supports status: true, restart: true
   action [:enable, :start]

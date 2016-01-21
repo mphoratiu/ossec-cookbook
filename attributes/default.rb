@@ -22,7 +22,7 @@ default['ossec']['server_role'] = 'ossec_server'
 default['ossec']['server_env']  = nil
 default['ossec']['checksum']    = '917989e23330d18b0d900e8722392cdbe4f17364a547508742c0fd005a1df7dd'
 default['ossec']['version']     = '2.8.3'
-default['ossec']['url']         = "http://www.ossec.net/files/ossec-hids-#{node['ossec']['version']}.tar.gz"
+default['ossec']['url']         = "https://bintray.com/artifact/download/ossec/ossec-hids/ossec-hids-#{node['ossec']['version']}.tar.gz"
 default['ossec']['logs']        = []
 default['ossec']['syscheck_freq'] = 79_200
 default['ossec']['disable_config_generation'] = false
@@ -34,6 +34,7 @@ default['ossec']['data_bag']['ssh']        = 'ssh'
 
 # server-only
 default['ossec']['server']['maxagents'] = 256
+default['ossec']['server']['agent_auth_port'] = 1515
 
 # used to populate config files and preload values for install
 default['ossec']['user']['language'] = 'en'
@@ -55,6 +56,7 @@ default['ossec']['user']['firewall_response'] = true
 default['ossec']['user']['pf'] = false
 default['ossec']['user']['pf_table'] = false
 default['ossec']['user']['white_list'] = []
+default['ossec']['user']['use_agent_auth'] = false
 
 # web-ui only
 default['ossec']['wui']['checksum']     = '142febadfd4b0de5a13ebd93c13eedfbee5f1899b6ee71c248054c14f47b8089'
